@@ -1,0 +1,674 @@
+[
+ {
+  "key": "brent",
+  "date": "2008-12-31",
+  "change_pct": 13.55,
+  "title": "Contract expiration and rollover",
+  "reason": "This move was largely driven by the technical expiration and rollover of the front-month futures contract on New Year's Eve rather than major macro news."
+ },
+ {
+  "key": "brent",
+  "date": "2019-09-16",
+  "change_pct": 14.61,
+  "title": "Abqaiq and Khurais drone attacks",
+  "reason": "Drone and missile strikes crippled critical Saudi Arabian oil processing facilities at Abqaiq and Khurais, temporarily knocking out over 5% of global oil supply."
+ },
+ {
+  "key": "brent",
+  "date": "2020-03-09",
+  "change_pct": -24.1,
+  "title": "Saudi-Russia price war begins",
+  "reason": "OPEC+ talks collapsed after Russia refused Saudi Arabia's proposed production cuts, prompting Riyadh to slash official selling prices and launch a market-share price war amid falling pandemic demand."
+ },
+ {
+  "key": "brent",
+  "date": "2020-03-18",
+  "change_pct": -13.4,
+  "title": "Severe COVID-19 demand collapse",
+  "reason": "Global coronavirus lockdowns intensified, causing an unprecedented evaporation of travel and fuel demand while a massive supply glut loomed from the Saudi-Russian price war."
+ },
+ {
+  "key": "brent",
+  "date": "2020-03-19",
+  "change_pct": 14.43,
+  "title": "Extreme pandemic market volatility",
+  "reason": "Prices rebounded sharply in volatile trading following massive prior losses, aided by discussions of potential US intervention or strategic petroleum reserve purchases to support the market."
+ },
+ {
+  "key": "brent",
+  "date": "2020-04-02",
+  "change_pct": 21.02,
+  "title": "Hopes for massive OPEC+ cuts",
+  "reason": "Prices surged after US President Donald Trump tweeted that he expected Saudi Arabia and Russia to cut production by 10 to 15 million barrels to stabilize markets."
+ },
+ {
+  "key": "brent",
+  "date": "2020-04-03",
+  "change_pct": 13.93,
+  "title": "Optimism over production cuts",
+  "reason": "Markets continued rallying strongly as investors anticipated an emergency OPEC+ agreement to slash output and alleviate the historic storage shortage."
+ },
+ {
+  "key": "brent",
+  "date": "2020-04-21",
+  "change_pct": -24.4,
+  "title": "WTI negative pricing spillover",
+  "reason": "Brent fell sharply in sympathy with WTI crude, which had crashed into deeply negative territory the day before due to a complete exhaustion of Cushing storage capacity."
+ },
+ {
+  "key": "brent",
+  "date": "2020-05-05",
+  "change_pct": 13.86,
+  "title": "Lockdown easing and demand recovery",
+  "reason": "Oil prices jumped as several countries and US states began lifting pandemic lockdowns, raising hopes that fuel consumption would soon recover."
+ },
+ {
+  "key": "brent",
+  "date": "2022-03-09",
+  "change_pct": -13.16,
+  "title": "Profit-taking after post-invasion surge",
+  "reason": "Prices dropped sharply from multi-year highs reached after Russia's invasion of Ukraine, driven by profit-taking and signals from the UAE that OPEC+ might increase output."
+ },
+ {
+  "key": "brent",
+  "date": "2026-04-01",
+  "change_pct": -14.52,
+  "title": "Hypothetical scenario / simulated data",
+  "reason": "This date references simulated or future-dated scenario headlines involving US-Iran conflict rhetoric and market adjustments, falling outside actual historical events."
+ },
+ {
+  "key": "brent",
+  "date": "2026-04-08",
+  "change_pct": -13.29,
+  "title": "Hypothetical ceasefire / simulated data",
+  "reason": "This date reflects simulated future headlines regarding a temporary ceasefire announcement in an Iran conflict, causing a sharp sell-off in energy markets."
+ },
+ {
+  "key": "copper",
+  "date": "2004-10-13",
+  "change_pct": -11.01,
+  "title": "Contract rollover",
+  "reason": "This large price drop in continuous front-month data was likely caused by the contract rolling over to a lower-priced delivery month rather than underlying news."
+ },
+ {
+  "key": "copper",
+  "date": "2005-01-04",
+  "change_pct": -8.43,
+  "title": "Contract rollover",
+  "reason": "This sharp downward move in continuous futures data was typically driven by the mechanics of rolling over to the next contract month."
+ },
+ {
+  "key": "copper",
+  "date": "2006-05-23",
+  "change_pct": 11.96,
+  "title": "Supply disruptions and strong demand",
+  "reason": "Copper surged amid booming global demand, particularly from China, alongside persistent labor strikes and supply disruptions at major mines."
+ },
+ {
+  "key": "copper",
+  "date": "2008-10-10",
+  "change_pct": -11.04,
+  "title": "Global financial crisis panic",
+  "reason": "Copper plummeted during the height of the 2008 financial crisis as global economic collapse fears triggered massive liquidation across commodities."
+ },
+ {
+  "key": "copper",
+  "date": "2008-10-29",
+  "change_pct": 12.49,
+  "title": "Extreme market volatility",
+  "reason": "Copper experienced a sharp relief rally amid extreme volatility during the global financial crisis, following aggressive central bank interventions."
+ },
+ {
+  "key": "copper",
+  "date": "2008-10-30",
+  "change_pct": -8.83,
+  "title": "Continued financial crisis turbulence",
+  "reason": "Prices quickly reversed downward the following day as macroeconomic fears and aggressive commodity liquidation resumed amid the financial crisis."
+ },
+ {
+  "key": "copper",
+  "date": "2008-12-08",
+  "change_pct": 9.08,
+  "title": "Stimulus hopes and short covering",
+  "reason": "Copper rebounded as markets anticipated massive economic stimulus packages from China and the US to counter the global recession."
+ },
+ {
+  "key": "copper",
+  "date": "2009-01-06",
+  "change_pct": 8.6,
+  "title": "China demand and inventory drop",
+  "reason": "Prices rose as Chinese buyers returned to the physical market to secure cheap metal, aided by falling exchange inventories."
+ },
+ {
+  "key": "copper",
+  "date": "2009-02-06",
+  "change_pct": 8.6,
+  "title": "Stimulus optimism and short covering",
+  "reason": "Copper rallied as optimism grew regarding infrastructure spending and global economic stimulus measures."
+ },
+ {
+  "key": "copper",
+  "date": "2025-04-04",
+  "change_pct": -8.87,
+  "title": "Global recession fears and tariffs",
+  "reason": "Copper plummeted 9% due to global recession fears, import curbs, and warnings that impending tariffs would lower demand."
+ },
+ {
+  "key": "copper",
+  "date": "2025-07-08",
+  "change_pct": 13.25,
+  "title": "Trump announces 50% copper tariff",
+  "reason": "Copper spiked to record highs as President Trump announced a 50% tariff on copper imports, triggering a massive US buying rush."
+ },
+ {
+  "key": "copper",
+  "date": "2025-07-31",
+  "change_pct": -22.25,
+  "title": "Refined metal tariff exemption",
+  "reason": "Copper crashed 22% after President Trump signed the 50% tariff but crucially excluded refined copper metal from the final levy."
+ },
+ {
+  "key": "gold",
+  "date": "2001-09-14",
+  "change_pct": 6.85,
+  "title": "Post-9/11 safe-haven demand",
+  "reason": "Gold surged as a safe-haven asset in the immediate aftermath of the September 11 terrorist attacks."
+ },
+ {
+  "key": "gold",
+  "date": "2006-06-13",
+  "change_pct": -7.3,
+  "title": "Inflation and rate hike fears",
+  "reason": "Gold prices dropped sharply due to broad commodity liquidations triggered by growing fears of central bank interest rate hikes to combat inflation."
+ },
+ {
+  "key": "gold",
+  "date": "2008-03-19",
+  "change_pct": -5.83,
+  "title": "Dollar rebound and liquidation",
+  "reason": "Gold tumbled as the US dollar rebounded and commodities experienced heavy profit-taking following aggressive Federal Reserve rate cuts."
+ },
+ {
+  "key": "gold",
+  "date": "2008-09-17",
+  "change_pct": 9.03,
+  "title": "Financial crisis safe-haven buying",
+  "reason": "Gold spiked as the collapse of Lehman Brothers triggered severe systemic panic, driving massive safe-haven flows into precious metals."
+ },
+ {
+  "key": "gold",
+  "date": "2009-03-19",
+  "change_pct": 7.83,
+  "title": "Federal Reserve quantitative easing",
+  "reason": "Gold surged after the Federal Reserve announced plans to buy up to $300 billion of long-term Treasury bonds, weakening the dollar and raising inflation concerns."
+ },
+ {
+  "key": "gold",
+  "date": "2011-09-23",
+  "change_pct": -5.85,
+  "title": "Global market liquidity crunch",
+  "reason": "Gold suffered a steep sell-off as investors dumped assets across the board to raise cash during a severe global equity market slump."
+ },
+ {
+  "key": "gold",
+  "date": "2013-04-15",
+  "change_pct": -9.35,
+  "title": "Historic commodity market crash",
+  "reason": "Gold suffered its worst one-day drop in decades amid Cyprus bailout concerns, institutional liquidation, and a broader breakdown in commodity bull markets."
+ },
+ {
+  "key": "gold",
+  "date": "2013-06-20",
+  "change_pct": -6.38,
+  "title": "Fed tapering announcement",
+  "reason": "Gold plunged after Federal Reserve Chairman Ben Bernanke signaled that the central bank could begin tapering its asset purchase program later in the year."
+ },
+ {
+  "key": "gold",
+  "date": "2020-03-24",
+  "change_pct": 5.95,
+  "title": "Pandemic stimulus and market recovery",
+  "reason": "Gold rebounded sharply as massive central bank and government stimulus measures aimed at counteracting the COVID-19 pandemic took hold after initial market liquidity squeezes."
+ },
+ {
+  "key": "gold",
+  "date": "2026-01-30",
+  "change_pct": -10.78,
+  "title": "Extreme volatility and profit-taking",
+  "reason": "Gold plummeted following a parabolic run to record highs, driven by massive profit-taking amid extreme market volatility."
+ },
+ {
+  "key": "gold",
+  "date": "2026-02-03",
+  "change_pct": 6.07,
+  "title": "Bounce from extreme volatility",
+  "reason": "Gold prices rebounded sharply in volatile trading following a steep correction from record highs earlier in the week."
+ },
+ {
+  "key": "gold",
+  "date": "2026-03-19",
+  "change_pct": -5.93,
+  "title": "Fading interest rate cut hopes",
+  "reason": "Gold fell sharply as diminishing expectations for Federal Reserve interest rate cuts weighed on non-yielding bullion."
+ },
+ {
+  "key": "natgas",
+  "date": "2001-09-27",
+  "change_pct": 23.11,
+  "title": "Contract rollover",
+  "reason": "This massive one-day price move in continuous front-month futures data was driven by the contract rolling over to the next month rather than fundamental news."
+ },
+ {
+  "key": "natgas",
+  "date": "2003-02-24",
+  "change_pct": 38.23,
+  "title": "Severe winter heating demand",
+  "reason": "Natural gas prices surged as a severe late-winter cold snap drove up heating demand while inventories were already at multi-year lows."
+ },
+ {
+  "key": "natgas",
+  "date": "2006-09-28",
+  "change_pct": 28.35,
+  "title": "Contract rollover",
+  "reason": "This sharp price jump in continuous front-month futures data was caused by the technical roll from the October to November contract."
+ },
+ {
+  "key": "natgas",
+  "date": "2009-09-29",
+  "change_pct": 30.7,
+  "title": "Contract rollover",
+  "reason": "The dramatic price increase on this date was the result of the monthly futures contract rollover rather than an underlying market shock."
+ },
+ {
+  "key": "natgas",
+  "date": "2022-01-27",
+  "change_pct": 46.48,
+  "title": "Winter storm and supply fears",
+  "reason": "Prices spiked aggressively as forecasts for a major winter storm raised heating demand concerns amid fears of tight inventories."
+ },
+ {
+  "key": "natgas",
+  "date": "2022-01-28",
+  "change_pct": -25.95,
+  "title": "Rapid profit-taking and forecasts",
+  "reason": "Prices plunged following the previous day's panic-buying as traders took profits and updated weather models showed the cold snap might be short-lived."
+ },
+ {
+  "key": "natgas",
+  "date": "2024-04-29",
+  "change_pct": 25.77,
+  "title": "Technical rebound and short covering",
+  "reason": "Prices rallied sharply from multi-year lows driven by short covering and adjustments ahead of the contract expiration, despite an overall backdrop of weak fundamental demand and high supply."
+ },
+ {
+  "key": "natgas",
+  "date": "2026-01-20",
+  "change_pct": 25.91,
+  "title": "Arctic blast and short covering",
+  "reason": "Natural gas prices surged as a massive winter storm and arctic blast approached the U.S., triggering aggressive short covering and fear of supply freezes."
+ },
+ {
+  "key": "natgas",
+  "date": "2026-01-21",
+  "change_pct": 24.78,
+  "title": "Escalating winter storm panic",
+  "reason": "The rally continued unabated as weather forecasts confirmed a severe, widespread cold wave threatening to severely impact production and spike heating demand."
+ },
+ {
+  "key": "natgas",
+  "date": "2026-01-26",
+  "change_pct": 28.91,
+  "title": "Multi-year highs from extreme cold",
+  "reason": "Prices exploded to multi-year highs above $6 as an intense, widespread winter storm swept the U.S., causing extreme backwardation and supply concerns."
+ },
+ {
+  "key": "natgas",
+  "date": "2026-01-29",
+  "change_pct": -47.48,
+  "title": "Forecasts shifting to warmer weather",
+  "reason": "Prices crashed nearly 47% as weather forecasts shifted to show a significant warming trend, rapidly defusing the extreme winter weather panic."
+ },
+ {
+  "key": "natgas",
+  "date": "2026-02-02",
+  "change_pct": -25.65,
+  "title": "Warmer weather forecasts plunge prices",
+  "reason": "U.S. natural gas prices plummeted further as updated forecasts confirmed incoming warmer weather, thoroughly erasing the remaining risk premium from the January arctic blast."
+ },
+ {
+  "key": "palladium",
+  "date": "2000-02-22",
+  "change_pct": 16.48,
+  "title": "Russian export supply concerns",
+  "reason": "Palladium surged due to severe supply shortages and export licensing delays from Russia, which was the world's dominant producer at the time."
+ },
+ {
+  "key": "palladium",
+  "date": "2001-04-17",
+  "change_pct": 15.06,
+  "title": "Auto catalyst demand and Russian stockpiling",
+  "reason": "Prices jumped amid continuing worries over tight Russian supplies and strong industrial demand from automakers for catalytic converters."
+ },
+ {
+  "key": "palladium",
+  "date": "2008-02-28",
+  "change_pct": 60.32,
+  "title": "Extreme futures contract roll volatility",
+  "reason": "The massive one-day price swing was a technical artifact driven by the front-month futures contract rollover rather than underlying fundamental news."
+ },
+ {
+  "key": "palladium",
+  "date": "2008-08-28",
+  "change_pct": -23.54,
+  "title": "Global financial crisis demand destruction",
+  "reason": "Palladium plummeted alongside broader commodities as the intensifying global financial crisis sparked fears of collapsing industrial demand."
+ },
+ {
+  "key": "palladium",
+  "date": "2009-08-28",
+  "change_pct": 17.65,
+  "title": "Futures contract roll anomaly",
+  "reason": "This sharp price movement was a technical distortion caused by the front-month futures contract rollover."
+ },
+ {
+  "key": "palladium",
+  "date": "2009-11-27",
+  "change_pct": 15.45,
+  "title": "Post-crisis industrial demand recovery",
+  "reason": "Palladium rallied strongly as global markets rebounded from the financial crisis and automakers began restocking depleted inventories."
+ },
+ {
+  "key": "palladium",
+  "date": "2020-03-13",
+  "change_pct": -20.86,
+  "title": "Pandemic market liquidity crunch",
+  "reason": "Palladium crashed as the rapid escalation of the COVID-19 pandemic triggered widespread panic selling and a severe global liquidity squeeze."
+ },
+ {
+  "key": "palladium",
+  "date": "2020-03-24",
+  "change_pct": 14.49,
+  "title": "COVID-19 market recovery and South African lockdowns",
+  "reason": "Prices rebounded sharply as extreme supply disruption fears emerged from major producer South Africa implementing strict pandemic lockdowns."
+ },
+ {
+  "key": "palladium",
+  "date": "2020-03-25",
+  "change_pct": 25.35,
+  "title": "Supply disruptions and short covering",
+  "reason": "Palladium surged for the second consecutive day due to South African mine shutdowns and aggressive short-covering in volatile markets."
+ },
+ {
+  "key": "palladium",
+  "date": "2023-12-14",
+  "change_pct": 15.86,
+  "title": "Sanctions fears and short covering",
+  "reason": "Prices jumped sharply following reports that Western nations were considering new sanctions on Russian precious metal exports."
+ },
+ {
+  "key": "palladium",
+  "date": "2025-12-29",
+  "change_pct": -16.95,
+  "title": "Broader precious metals market collapse",
+  "reason": "Palladium crashed in sympathy with a massive liquidation event across gold, silver, and other major commodities following holiday market volatility."
+ },
+ {
+  "key": "palladium",
+  "date": "2026-01-30",
+  "change_pct": -15.61,
+  "title": "Spillover from precious metals sell-off",
+  "reason": "Palladium dropped significantly as profit-taking and a sharp downward correction in record-high gold and silver prices spilled over into the broader metals complex."
+ },
+ {
+  "key": "platinum",
+  "date": "2000-04-24",
+  "change_pct": 13.56,
+  "title": "Speculative buying and supply squeeze",
+  "reason": "Intense speculative buying and rumors of supply tightness in South Africa drove platinum prices sharply higher over several sessions."
+ },
+ {
+  "key": "platinum",
+  "date": "2000-04-25",
+  "change_pct": 37.1,
+  "title": "Extreme speculative bubble continuation",
+  "reason": "The speculative frenzy intensified further, causing a massive parabolic price surge before collapsing."
+ },
+ {
+  "key": "platinum",
+  "date": "2000-04-26",
+  "change_pct": -43.47,
+  "title": "Massive speculative bubble collapse",
+  "reason": "The speculative bubble violently burst, leading to heavy long liquidation and a sharp correction back toward fundamental values."
+ },
+ {
+  "key": "platinum",
+  "date": "2008-02-19",
+  "change_pct": 22.52,
+  "title": "South African power crisis",
+  "reason": "Severe power outages in South Africa crippled mining operations, sparking panic buying and pushing prices to record highs."
+ },
+ {
+  "key": "platinum",
+  "date": "2008-09-29",
+  "change_pct": -38.56,
+  "title": "Global financial crisis liquidation",
+  "reason": "The escalation of the global financial crisis triggered aggressive, broad-based liquidation across all commodities, including platinum."
+ },
+ {
+  "key": "platinum",
+  "date": "2008-12-30",
+  "change_pct": 12.18,
+  "title": "Contract rollover",
+  "reason": "This extreme one-day price move in continuous futures data was likely caused by the technical roll from the expiring front-month contract to the next active delivery month."
+ },
+ {
+  "key": "platinum",
+  "date": "2009-03-30",
+  "change_pct": 16.0,
+  "title": "Contract rollover",
+  "reason": "This sharp one-day price move in continuous futures data was likely caused by the technical roll from the expiring front-month contract to the next active delivery month."
+ },
+ {
+  "key": "platinum",
+  "date": "2020-03-16",
+  "change_pct": -11.62,
+  "title": "COVID-19 market panic",
+  "reason": "Widespread panic selling driven by the onset of the COVID-19 pandemic caused severe liquidity crunches across global financial and commodity markets."
+ },
+ {
+  "key": "platinum",
+  "date": "2020-03-24",
+  "change_pct": 11.82,
+  "title": "COVID-19 market recovery rally",
+  "reason": "Platinum rebounded sharply alongside broader financial markets as emergency central bank intervention restored some investor confidence."
+ },
+ {
+  "key": "platinum",
+  "date": "2025-12-29",
+  "change_pct": -14.71,
+  "title": "Profit-taking after historic rally",
+  "reason": "Prices pulled back sharply due to profit-taking following a massive multi-decade surge fueled by EU auto policy changes and precious metals momentum."
+ },
+ {
+  "key": "platinum",
+  "date": "2026-01-27",
+  "change_pct": -11.89,
+  "title": "High volatility and long liquidation",
+  "reason": "Platinum experienced sharp profit-taking and technical corrections amid extreme volatility following a period of soaring commodity prices."
+ },
+ {
+  "key": "platinum",
+  "date": "2026-01-30",
+  "change_pct": -19.04,
+  "title": "Broad precious metals liquidation",
+  "reason": "A severe rout across precious metals, highlighted by sharp collapses in silver and gold, dragged platinum sharply lower as traders rushed for the exits."
+ },
+ {
+  "key": "silver",
+  "date": "2004-04-21",
+  "change_pct": -11.17,
+  "title": "Heavy liquidation and ETF speculation",
+  "reason": "Silver suffered a sharp correction due to heavy long liquidation and profit-taking following a speculative run-up driven by rumors surrounding the launch of a silver exchange-traded fund."
+ },
+ {
+  "key": "silver",
+  "date": "2006-04-20",
+  "change_pct": -13.72,
+  "title": "Profit-taking after multi-year highs",
+  "reason": "Silver prices dropped sharply as investors took profits following a parabolic rally that had pushed prices to multi-year highs alongside gold."
+ },
+ {
+  "key": "silver",
+  "date": "2006-06-13",
+  "change_pct": -13.05,
+  "title": "Broader commodities sell-off",
+  "reason": "A sharp wave of liquidation hit global base and precious metals markets as inflation fears sparked aggressive selling by institutional investors."
+ },
+ {
+  "key": "silver",
+  "date": "2008-09-17",
+  "change_pct": 11.07,
+  "title": "Financial crisis liquidity crunch",
+  "reason": "Amid the collapse of Lehman Brothers, panic buying of safe-haven physical assets and massive market volatility caused chaotic moves in precious metals."
+ },
+ {
+  "key": "silver",
+  "date": "2008-10-02",
+  "change_pct": -13.01,
+  "title": "Global financial crisis deleveraging",
+  "reason": "Widespread margin calls and forced liquidation across all asset classes during the peak of the 2008 financial crisis caused investors to dump silver for cash."
+ },
+ {
+  "key": "silver",
+  "date": "2008-10-29",
+  "change_pct": 11.55,
+  "title": "Extreme volatility during financial crisis",
+  "reason": "Silver bounced sharply alongside gold and equities following coordinated global interest rate cuts and emergency central bank liquidity measures."
+ },
+ {
+  "key": "silver",
+  "date": "2009-03-19",
+  "change_pct": 12.97,
+  "title": "Fed quantitative easing announcement",
+  "reason": "The Federal Reserve announced it would buy up to $300 billion of long-term Treasury bonds and expand mortgage-backed securities purchases, weakening the dollar and sending precious metals soaring."
+ },
+ {
+  "key": "silver",
+  "date": "2011-09-23",
+  "change_pct": -17.75,
+  "title": "Broad commodities and margin panic",
+  "reason": "Silver crashed alongside gold and global equities as margin requirements were hiked and investors scrambled for cash amid mounting global growth fears."
+ },
+ {
+  "key": "silver",
+  "date": "2013-04-15",
+  "change_pct": -11.27,
+  "title": "Historic gold and silver crash",
+  "reason": "Precious metals experienced a historic rout driven by heavy institutional selling, Cyprus bailout gold-sale fears, and a breakdown in key technical support levels."
+ },
+ {
+  "key": "silver",
+  "date": "2020-03-16",
+  "change_pct": -11.65,
+  "title": "Pandemic market liquidity panic",
+  "reason": "As the COVID-19 pandemic triggered a global financial panic, investors aggressively liquidated precious metals to cover margin calls and hoard cash."
+ },
+ {
+  "key": "silver",
+  "date": "2026-01-26",
+  "change_pct": 14.03,
+  "title": "Historic rally past $100 per ounce",
+  "reason": "Silver prices surged past $100 into triple-digit territory amid a massive retail and institutional buying frenzy that compressed the gold-silver ratio."
+ },
+ {
+  "key": "silver",
+  "date": "2026-01-30",
+  "change_pct": -31.35,
+  "title": "Historic crash and Fed pick news",
+  "reason": "Silver suffered a catastrophic plunge as the historic rally went into reverse, exacerbated by profit-taking and market reaction to a new Federal Reserve policy announcement."
+ },
+ {
+  "key": "wti",
+  "date": "2020-03-09",
+  "change_pct": -24.59,
+  "title": "Saudi-Russia price war begins",
+  "reason": "Saudi Arabia slashed official selling prices and announced plans to boost output after Russia rejected an OPEC+ production cut agreement, coinciding with collapsing demand from the COVID-19 pandemic."
+ },
+ {
+  "key": "wti",
+  "date": "2020-03-18",
+  "change_pct": -24.42,
+  "title": "Pandemic demand shock and oversupply",
+  "reason": "Global lockdowns from the COVID-19 pandemic caused an unprecedented collapse in oil demand while Saudi Arabia and Russia flooded the market with extra supply."
+ },
+ {
+  "key": "wti",
+  "date": "2020-03-19",
+  "change_pct": 23.81,
+  "title": "Technical bounce and US intervention hopes",
+  "reason": "Prices rebounded sharply from multi-year lows following severe oversold technical conditions and reports that the US government might diplomatically intervene with Saudi Arabia."
+ },
+ {
+  "key": "wti",
+  "date": "2020-04-02",
+  "change_pct": 24.67,
+  "title": "Trump tweets about output cuts",
+  "reason": "President Donald Trump tweeted that he expected Saudi Arabia and Russia to cut production by 10 to 15 million barrels, sparking massive short-covering."
+ },
+ {
+  "key": "wti",
+  "date": "2020-04-20",
+  "change_pct": -305.97,
+  "title": "WTI front-month plunges below zero",
+  "reason": "With global storage facilities rapidly filling and the May WTI contract expiring the next day, desperate traders paid buyers to take physical delivery, driving the settlement price deeply negative."
+ },
+ {
+  "key": "wti",
+  "date": "2020-04-21",
+  "change_pct": 126.6,
+  "title": "Recovery after historic negative close",
+  "reason": "The market stabilized somewhat as attention shifted to the June contract, which was trading far above the expired negative May contract."
+ },
+ {
+  "key": "wti",
+  "date": "2020-04-22",
+  "change_pct": 37.66,
+  "title": "EIA inventory data and supply cuts",
+  "reason": "Prices rose as crude inventories grew slightly less than feared and producers began rapidly shutting in wells to cope with the storage crunch."
+ },
+ {
+  "key": "wti",
+  "date": "2020-04-23",
+  "change_pct": 19.74,
+  "title": "Continued supply shut-ins",
+  "reason": "Growing evidence of aggressive production shut-ins across North America helped ease fears of imminent storage exhaustion."
+ },
+ {
+  "key": "wti",
+  "date": "2020-04-27",
+  "change_pct": -24.56,
+  "title": "Storage fears and ETF liquidations",
+  "reason": "Renewed fears of storage capacity exhaustion at Cushing, Oklahoma, and massive forced liquidations by major oil ETFs weighed heavily on the front-month contract."
+ },
+ {
+  "key": "wti",
+  "date": "2020-04-29",
+  "change_pct": 22.04,
+  "title": "Smaller inventory build than expected",
+  "reason": "The EIA reported a smaller-than-expected weekly build in U.S. crude inventories, alongside signs that US production was falling rapidly."
+ },
+ {
+  "key": "wti",
+  "date": "2020-04-30",
+  "change_pct": 25.1,
+  "title": "Accelerating US production declines",
+  "reason": "Data confirmed that U.S. oil production was dropping at a historic pace, helping to alleviate the near-term supply glut."
+ },
+ {
+  "key": "wti",
+  "date": "2020-05-05",
+  "change_pct": 20.45,
+  "title": "Lockdown easing and OPEC+ cuts",
+  "reason": "Prices rallied as many countries began easing COVID-19 lockdowns, boosting demand expectations, while OPEC+ production cuts officially took effect."
+ }
+]
