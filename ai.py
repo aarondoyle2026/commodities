@@ -4,9 +4,7 @@ import requests
 
 KEY = os.environ.get("GEMINI_API_KEY")
 ATTEMPTS = [
-    ("gemini-3.8-flash", True),
     ("gemini-3.8-flash", False),
-    ("gemini-3.5-flash-lite", True),
     ("gemini-3.5-flash-lite", False),
 ]
 BASE = "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent"
@@ -24,15 +22,15 @@ def chat(prompt, max_tokens=1500):
         if search:
             body["tools"] = [{"google_search": {}}]
         label = model + (" + search" if search else "")
-        for attempt in range(2):
+        for attempt in range(3):
             try:
                 r = requests.post(BASE % model, params={"key": KEY}, json=body, timeout=180)
             except Exception as e:
                 last = "%s: %s" % (label, e)
                 print("Request error -", last)
                 break
-            if r.status_code == 429 and attempt == 0:
-                print("Rate limited on", label, "- waiting 40s")
+            if r.status_code in (429, 500, 503) and attempt < 2:
+                print("Busy or rate limited on", label, "- waiting 40s")
                 time.sleep(40)
                 continue
             try:
