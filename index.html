@@ -16,6 +16,14 @@ header{display:flex;justify-content:space-between;align-items:center;margin-bott
 .seg{display:flex;background:#111a2e;border:1px solid #1e2a44;border-radius:10px;padding:3px}
 .seg button,.ranges button{background:none;border:0;color:#8a9bb8;font:600 13px Inter,-apple-system,sans-serif;padding:6px 12px;border-radius:7px;cursor:pointer;white-space:nowrap}
 .seg button.on,.ranges button.on{background:#1e2a44;color:#e6edf7}
+.brief{position:relative;overflow:hidden;background:linear-gradient(135deg,#1a2340,#111a2e);border:1px solid #2a3654;border-radius:16px;padding:18px 18px 14px 22px;margin-bottom:16px}
+.brief:before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#f5c451}
+.blabel{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#f5c451}
+.blabel span{color:#5f6f8c;font-weight:500;margin-left:6px}
+.brief h3{font-size:19px;line-height:1.3;margin:8px 0 10px;letter-spacing:-0.015em;font-weight:700}
+.brief p{margin:0 0 10px;font-size:14.5px;line-height:1.6;color:#c3cee0}
+.bsrc{font-size:12px;color:#5f6f8c;margin-top:6px;line-height:1.7}
+.bsrc a{color:#8a9bb8;text-decoration:none;border-bottom:1px solid #2f3f63;margin-right:10px}
 .panel{background:linear-gradient(180deg,#121c33,#0e1628);border:1px solid #1e2a44;border-radius:16px;padding:18px}
 .mname{font-size:14px;color:#8a9bb8;font-weight:600}
 .mprice{font-size:36px;font-weight:700;letter-spacing:-0.03em;margin:4px 0 8px;font-variant-numeric:tabular-nums}
@@ -24,6 +32,12 @@ header{display:flex;justify-content:space-between;align-items:center;margin-bott
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid #1e2a44}
 .sl{font-size:11px;color:#5f6f8c;text-transform:uppercase;letter-spacing:.06em}
 .sv{font-size:15px;font-weight:600;margin-top:4px;font-variant-numeric:tabular-nums}
+.evh{font-size:11px;color:#5f6f8c;text-transform:uppercase;letter-spacing:.06em;margin-top:18px;padding-top:14px;border-top:1px solid #1e2a44}
+.ev{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid #16213a}
+.ev:last-child{border-bottom:0}
+.evd{min-width:86px;font-size:12px;color:#8a9bb8;font-variant-numeric:tabular-nums}
+.evt{font-size:14px;font-weight:600;margin-bottom:3px}
+.evr{font-size:13px;color:#a9b6cc;line-height:1.5}
 h2{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#5f6f8c;margin:28px 0 10px;font-weight:600}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .card{background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:14px;cursor:pointer;transition:border-color .15s,transform .15s}
@@ -38,13 +52,19 @@ h2{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#5f6f8c;ma
 .pill.up{color:#22c55e;background:rgba(34,197,94,.12)}
 .pill.down{color:#ef4444;background:rgba(239,68,68,.12)}
 footer{margin-top:32px;color:#5f6f8c;font-size:12px;text-align:center;line-height:1.5}
-@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.mprice{font-size:30px}.chartbox{height:230px}.grid{grid-template-columns:1fr 1fr;gap:10px}.px{font-size:18px}.card{padding:12px}.ranges button{padding:6px 9px}}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.mprice{font-size:30px}.chartbox{height:230px}.grid{grid-template-columns:1fr 1fr;gap:10px}.px{font-size:18px}.card{padding:12px}.ranges button{padding:6px 9px}.brief h3{font-size:17px}.evd{min-width:76px}}
 </style></head><body>
 <div class="wrap">
   <header>
     <div><div class="brand"><span class="dot"></span>Commodities</div><div id="upd" class="muted">Loading prices...</div></div>
     <div class="seg" id="cur"><button data-c="usd" onclick="setCur('usd')">USD</button><button data-c="eur" onclick="setCur('eur')">EUR</button></div>
   </header>
+  <section class="brief" id="brief" style="display:none">
+    <div class="blabel">&#10022; Daily briefing<span id="bdate"></span></div>
+    <h3 id="bhead"></h3>
+    <div id="bbody"></div>
+    <div id="bsrc" class="bsrc"></div>
+  </section>
   <section class="panel">
     <div id="mName" class="mname"></div>
     <div id="mPrice" class="mprice"></div>
@@ -52,18 +72,20 @@ footer{margin-top:32px;color:#5f6f8c;font-size:12px;text-align:center;line-heigh
     <div class="ranges" id="ranges"></div>
     <div class="chartbox"><canvas id="chart"></canvas></div>
     <div class="stats" id="stats"></div>
+    <div id="evs"></div>
   </section>
   <div id="groups"></div>
-  <footer>Front-month futures settlement prices via Yahoo Finance, full available history, updated each weekday after the US close.<br>EUR prices begin when EUR/USD history starts. Indicative only, not a dealing price.</footer>
+  <footer>Front-month futures settlement prices via Yahoo Finance, full available history, updated each weekday after the US close.<br>Briefing and move explanations are AI-generated and may contain errors. Indicative only, not investment advice.</footer>
 </div>
 <script>
-var S = {hist: null, latest: null, cur: 'usd', sel: 'gold', range: 261, chart: null};
+var S = {hist: null, latest: null, events: {}, cur: 'usd', sel: 'gold', range: 261, chart: null};
 var RANGES = [['1M', 22], ['3M', 66], ['6M', 130], ['1Y', 261], ['5Y', 1305], ['10Y', 2610], ['MAX', 0]];
 var GROUPS = ['Precious metals', 'Industrial metals', 'Energy'];
 var MAX_POINTS = 700;
 try { S.cur = localStorage.getItem('cmd_cur') || 'usd'; } catch (e) {}
 
 function $(id) { return document.getElementById(id); }
+function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 function fmt(n, dp) { return n.toLocaleString('en-IE', {minimumFractionDigits: dp, maximumFractionDigits: dp}); }
 function dpFor(n) { return Math.abs(n) < 10 ? 3 : 2; }
 function sym() { return S.cur === 'usd' ? '$' : '\u20ac'; }
@@ -75,6 +97,17 @@ function nn(arr) { var o = []; for (var i = 0; i < arr.length; i++) { if (arr[i]
 function firstIdx(arr) { for (var i = 0; i < arr.length; i++) { if (arr[i] !== null) { return i; } } return -1; }
 function maxOf(a) { var m = a[0]; for (var i = 1; i < a.length; i++) { if (a[i] > m) { m = a[i]; } } return m; }
 function minOf(a) { var m = a[0]; for (var i = 1; i < a.length; i++) { if (a[i] < m) { m = a[i]; } } return m; }
+function ldate(s) { return new Date(s + 'T12:00:00').toLocaleDateString('en-IE', {day: 'numeric', month: 'short', year: 'numeric'}); }
+
+function wrap(s, n) {
+  var w = String(s).split(' '), out = [], line = '';
+  for (var i = 0; i < w.length; i++) {
+    if (line && (line + ' ' + w[i]).length > n) { out.push(line); line = w[i]; }
+    else { line = line ? line + ' ' + w[i] : w[i]; }
+  }
+  if (line) { out.push(line); }
+  return out;
+}
 
 function series(key) {
   var raw = S.hist.series[key], fx = S.hist.eurusd, out = [];
@@ -87,11 +120,12 @@ function series(key) {
   return out;
 }
 
-function thin(labels, data) {
+function thin(labels, data, keep) {
   if (data.length <= MAX_POINTS) { return [labels, data]; }
   var step = Math.ceil(data.length / MAX_POINTS), l = [], d = [];
-  for (var i = 0; i < data.length; i += step) { l.push(labels[i]); d.push(data[i]); }
-  if (l[l.length - 1] !== labels[labels.length - 1]) { l.push(labels[labels.length - 1]); d.push(data[data.length - 1]); }
+  for (var i = 0; i < data.length; i++) {
+    if (i % step === 0 || keep[labels[i]] || i === data.length - 1) { l.push(labels[i]); d.push(data[i]); }
+  }
   return [l, d];
 }
 
@@ -116,6 +150,33 @@ function fdate(s, short) {
 
 function stat(l, v, c) {
   return '<div class="stat"><div class="sl">' + l + '</div><div class="sv"' + (c ? ' style="color:' + c + '"' : '') + '>' + v + '</div></div>';
+}
+
+function renderBrief(b) {
+  if (!b || !b.headline) { return; }
+  var h = '';
+  for (var i = 0; i < b.paragraphs.length; i++) { h += '<p>' + esc(b.paragraphs[i]) + '</p>'; }
+  var src = '';
+  for (var j = 0; j < (b.sources || []).length; j++) { src += '<a href="' + esc(b.sources[j].url) + '" target="_blank" rel="noopener">' + esc(b.sources[j].title) + '</a>'; }
+  $('bdate').innerHTML = new Date(b.date + 'T12:00:00').toLocaleDateString('en-IE', {weekday: 'short', day: 'numeric', month: 'short'});
+  $('bhead').innerHTML = esc(b.headline);
+  $('bbody').innerHTML = h;
+  $('bsrc').innerHTML = src ? 'Sources: ' + src : '';
+  $('brief').style.display = 'block';
+}
+
+function renderEvents(evm, from) {
+  var list = [];
+  for (var d in evm) { if (evm.hasOwnProperty(d) && d >= from) { list.push(evm[d]); } }
+  list.sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+  if (!list.length) { $('evs').innerHTML = ''; return; }
+  var h = '<div class="evh">Big moves in this period &middot; <span style="color:#f5c451">&#9679;</span> marked on chart</div>';
+  for (var i = 0; i < list.length && i < 8; i++) {
+    var e = list[i];
+    h += '<div class="ev"><div class="evd">' + ldate(e.date) + '<div style="margin-top:6px">' + pill(e.change_pct) + '</div></div>';
+    h += '<div><div class="evt">' + esc(e.title) + '</div><div class="evr">' + esc(e.reason) + '</div></div></div>';
+  }
+  $('evs').innerHTML = h;
 }
 
 function renderGrid() {
@@ -151,12 +212,16 @@ function renderMain() {
   var rb = '';
   for (var i = 0; i < RANGES.length; i++) { rb += '<button class="' + (RANGES[i][1] === S.range ? 'on' : '') + '" onclick="setRange(' + RANGES[i][1] + ')">' + RANGES[i][0] + '</button>'; }
   $('ranges').innerHTML = rb;
-  var t = thin(labels, data);
-  drawChart(t[0], t[1], col, dpFor(p));
+  var evm = S.events[S.sel] || {};
+  var t = thin(labels, data, evm), evs = [];
+  for (var k = 0; k < t[0].length; k++) { evs.push(evm[t[0][k]] || null); }
+  drawChart(t[0], t[1], col, dpFor(p), evs);
+  renderEvents(evm, labels[0]);
 }
 
-function drawChart(labels, data, col, dp) {
+function drawChart(labels, data, col, dp, evs) {
   if (S.chart) { S.chart.destroy(); }
+  var ticks = window.innerWidth < 600 ? 4 : 6;
   var fill = function (c) {
     var a = c.chart.chartArea;
     if (!a) { return 'rgba(0,0,0,0)'; }
@@ -164,19 +229,28 @@ function drawChart(labels, data, col, dp) {
     g.addColorStop(0, hexA(col, 0.30)); g.addColorStop(1, hexA(col, 0));
     return g;
   };
+  var ds = {data: data, borderColor: col, borderWidth: 2, tension: 0.2, spanGaps: true, fill: true, backgroundColor: fill, pointBorderColor: '#0b1120', pointBorderWidth: 1.5};
+  ds.pointRadius = function (c) { return evs[c.dataIndex] ? 4.5 : 0; };
+  ds.pointHoverRadius = function (c) { return evs[c.dataIndex] ? 7 : 5; };
+  ds.pointBackgroundColor = function (c) { return evs[c.dataIndex] ? '#f5c451' : col; };
+  ds.pointHoverBackgroundColor = ds.pointBackgroundColor;
   S.chart = new Chart($('chart').getContext('2d'), {
     type: 'line',
-    data: {labels: labels, datasets: [{data: data, borderColor: col, borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, pointHoverBackgroundColor: col, pointHoverBorderColor: '#0b1120', pointHoverBorderWidth: 2, tension: 0.2, spanGaps: true, fill: true, backgroundColor: fill}]},
+    data: {labels: labels, datasets: [ds]},
     options: {
       responsive: true, maintainAspectRatio: false, animation: {duration: 450},
       interaction: {mode: 'index', intersect: false},
       plugins: {
         legend: {display: false},
-        tooltip: {backgroundColor: '#0b1120', borderColor: '#26324d', borderWidth: 1, titleColor: '#8a9bb8', bodyColor: '#e6edf7', bodyFont: {weight: '600', size: 14}, displayColors: false, padding: 10,
-          callbacks: {title: function (t) { return fdate(t[0].label); }, label: function (t) { return sym() + fmt(t.parsed.y, dp); }}}
+        tooltip: {backgroundColor: '#0b1120', borderColor: '#26324d', borderWidth: 1, titleColor: '#8a9bb8', bodyColor: '#e6edf7', bodyFont: {weight: '600', size: 14}, footerColor: '#c3cee0', footerFont: {weight: '400', size: 12}, displayColors: false, padding: 10,
+          callbacks: {
+            title: function (t) { return fdate(t[0].label); },
+            label: function (t) { return sym() + fmt(t.parsed.y, dp); },
+            footer: function (t) { var e = evs[t[0].dataIndex]; if (!e) { return []; } return [''].concat(wrap(e.title + ' (' + (e.change_pct >= 0 ? '+' : '') + e.change_pct.toFixed(2) + '%)', 36), wrap(e.reason, 36)); }
+          }}
       },
       scales: {
-        x: {grid: {display: false}, border: {display: false}, ticks: {color: '#5f6f8c', maxTicksLimit: 6, maxRotation: 0, autoSkip: true, callback: function (v) { return fdate(this.getLabelForValue(v), true); }}},
+        x: {grid: {display: false}, border: {display: false}, ticks: {color: '#5f6f8c', maxTicksLimit: ticks, maxRotation: 0, autoSkip: true, autoSkipPadding: 16, callback: function (v) { return fdate(this.getLabelForValue(v), true); }}},
         y: {position: 'right', grid: {color: '#1a2540'}, border: {display: false}, ticks: {color: '#5f6f8c', maxTicksLimit: 5, callback: function (v) { return fmt(v, dp); }}}
       }
     }
@@ -192,16 +266,22 @@ function renderAll() { renderCur(); renderMain(); renderGrid(); }
 function pick(key) { S.sel = key; renderMain(); renderGrid(); window.scrollTo({top: 0, behavior: 'smooth'}); }
 function setRange(n) { S.range = n; renderMain(); }
 function setCur(c) { S.cur = c; try { localStorage.setItem('cmd_cur', c); } catch (e) {} renderAll(); }
+function optional(url) { return fetch(url).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }); }
 
 Chart.defaults.font.family = 'Inter,-apple-system,Segoe UI,Helvetica,Arial,sans-serif';
 var bust = '?t=' + Date.now();
 Promise.all([
   fetch('data/latest.json' + bust).then(function (r) { return r.json(); }),
-  fetch('data/history.json' + bust).then(function (r) { return r.json(); })
+  fetch('data/history.json' + bust).then(function (r) { return r.json(); }),
+  optional('data/summary.json' + bust),
+  optional('data/events.json' + bust)
 ]).then(function (res) {
   S.latest = res[0]; S.hist = res[1];
+  var ev = res[3] || [];
+  for (var i = 0; i < ev.length; i++) { if (!S.events[ev[i].key]) { S.events[ev[i].key] = {}; } S.events[ev[i].key][ev[i].date] = ev[i]; }
   var d = new Date(S.latest.updated);
   $('upd').innerHTML = 'Updated ' + d.toLocaleString('en-IE', {weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'}) + ' &middot; EUR/USD ' + S.latest.eurusd.toFixed(4);
+  renderBrief(res[2]);
   renderAll();
 }).catch(function () { $('upd').innerHTML = 'Could not load prices - run the workflow first'; });
 </script>
