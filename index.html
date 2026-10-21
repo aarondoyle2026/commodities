@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Commodity Prices</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1120;color:#e6edf7;font-family:Inter,-apple-system,Segoe UI,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 40px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:12px}
+.brand{font-size:20px;font-weight:700;letter-spacing:-0.02em;display:flex;align-items:center;gap:9px}
+.dot{width:10px;height:10px;border-radius:50%;background:#f5c451;box-shadow:0 0 12px #f5c451}
+.muted{color:#8a9bb8;font-size:13px;margin-top:3px}
+.seg{display:flex;background:#111a2e;border:1px solid #1e2a44;border-radius:10px;padding:3px}
+.seg button,.ranges button{background:none;border:0;color:#8a9bb8;font:600 13px Inter,-apple-system,sans-serif;padding:6px 12px;border-radius:7px;cursor:pointer;white-space:nowrap}
+.seg button.on,.ranges button.on{background:#1e2a44;color:#e6edf7}
+.panel{background:linear-gradient(180deg,#121c33,#0e1628);border:1px solid #1e2a44;border-radius:16px;padding:18px}
+.mname{font-size:14px;color:#8a9bb8;font-weight:600}
+.mprice{font-size:36px;font-weight:700;letter-spacing:-0.03em;margin:4px 0 8px;font-variant-numeric:tabular-nums}
+.ranges{display:flex;gap:4px;margin:16px 0 10px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.chartbox{position:relative;height:290px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;padding-top:14px;border-top:1px solid #1e2a44}
+.sl{font-size:11px;color:#5f6f8c;text-transform:uppercase;letter-spacing:.06em}
+.sv{font-size:15px;font-weight:600;margin-top:4px;font-variant-numeric:tabular-nums}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#5f6f8c;margin:28px 0 10px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.card{background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:14px;cursor:pointer;transition:border-color .15s,transform .15s}
+.card:hover{border-color:#2f3f63;transform:translateY(-1px)}
+.card.active{border-color:#f5c451;box-shadow:0 0 0 1px #f5c451 inset}
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:6px;flex-wrap:wrap}
+.nm{font-weight:600;font-size:15px}
+.un{color:#5f6f8c;font-size:12px;font-weight:500}
+.px{font-size:22px;font-weight:700;margin:8px 0 8px;font-variant-numeric:tabular-nums;letter-spacing:-0.02em}
+.card svg{width:100%;height:36px;display:block}
+.pill{font-size:12px;font-weight:600;padding:3px 8px;border-radius:999px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill.up{color:#22c55e;background:rgba(34,197,94,.12)}
+.pill.down{color:#ef4444;background:rgba(239,68,68,.12)}
+footer{margin-top:32px;color:#5f6f8c;font-size:12px;text-align:center;line-height:1.5}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.mprice{font-size:30px}.chartbox{height:230px}.grid{grid-template-columns:1fr 1fr;gap:10px}.px{font-size:18px}.card{padding:12px}.ranges button{padding:6px 9px}}
+</style></head><body>
+<div class="wrap">
+  <header>
+    <div><div class="brand"><span class="dot"></span>Commodities</div><div id="upd" class="muted">Loading prices...</div></div>
+    <div class="seg" id="cur"><button data-c="usd" onclick="setCur('usd')">USD</button><button data-c="eur" onclick="setCur('eur')">EUR</button></div>
+  </header>
+  <section class="panel">
+    <div id="mName" class="mname"></div>
+    <div id="mPrice" class="mprice"></div>
+    <div id="mChg"></div>
+    <div class="ranges" id="ranges"></div>
+    <div class="chartbox"><canvas id="chart"></canvas></div>
+    <div class="stats" id="stats"></div>
+  </section>
+  <div id="groups"></div>
+  <footer>Front-month futures settlement prices via Yahoo Finance, full available history, updated each weekday after the US close.<br>EUR prices begin when EUR/USD history starts. Indicative only, not a dealing price.</footer>
+</div>
+<script>
+var S = {hist: null, latest: null, cur: 'usd', sel: 'gold', range: 261, chart: null};
+var RANGES = [['1M', 22], ['3M', 66], ['6M', 130], ['1Y', 261], ['5Y', 1305], ['10Y', 2610], ['MAX', 0]];
+var GROUPS = ['Precious metals', 'Industrial metals', 'Energy'];
+var MAX_POINTS = 700;
+try { S.cur = localStorage.getItem('cmd_cur') || 'usd'; } catch (e) {}
+
+function $(id) { return document.getElementById(id); }
+function fmt(n, dp) { return n.toLocaleString('en-IE', {minimumFractionDigits: dp, maximumFractionDigits: dp}); }
+function dpFor(n) { return Math.abs(n) < 10 ? 3 : 2; }
+function sym() { return S.cur === 'usd' ? '$' : '\u20ac'; }
+function pct(a, b) { return (b - a) / Math.abs(a) * 100; }
+function slice(arr, n) { return n > 0 && arr.length > n ? arr.slice(arr.length - n) : arr; }
+function item(key) { for (var i = 0; i < S.latest.items.length; i++) { if (S.latest.items[i].key === key) { return S.latest.items[i]; } } return null; }
+function hexA(h, a) { return 'rgba(' + parseInt(h.substr(1, 2), 16) + ',' + parseInt(h.substr(3, 2), 16) + ',' + parseInt(h.substr(5, 2), 16) + ',' + a + ')'; }
+function nn(arr) { var o = []; for (var i = 0; i < arr.length; i++) { if (arr[i] !== null) { o.push(arr[i]); } } return o; }
+function firstIdx(arr) { for (var i = 0; i < arr.length; i++) { if (arr[i] !== null) { return i; } } return -1; }
+function maxOf(a) { var m = a[0]; for (var i = 1; i < a.length; i++) { if (a[i] > m) { m = a[i]; } } return m; }
+function minOf(a) { var m = a[0]; for (var i = 1; i < a.length; i++) { if (a[i] < m) { m = a[i]; } } return m; }
+
+function series(key) {
+  var raw = S.hist.series[key], fx = S.hist.eurusd, out = [];
+  for (var i = 0; i < raw.length; i++) {
+    var v = raw[i];
+    if (v === null) { out.push(null); }
+    else if (S.cur === 'usd') { out.push(v); }
+    else { out.push(fx[i] ? v / fx[i] : null); }
+  }
+  return out;
+}
+
+function thin(labels, data) {
+  if (data.length <= MAX_POINTS) { return [labels, data]; }
+  var step = Math.ceil(data.length / MAX_POINTS), l = [], d = [];
+  for (var i = 0; i < data.length; i += step) { l.push(labels[i]); d.push(data[i]); }
+  if (l[l.length - 1] !== labels[labels.length - 1]) { l.push(labels[labels.length - 1]); d.push(data[data.length - 1]); }
+  return [l, d];
+}
+
+function pill(p) {
+  var up = p >= 0;
+  return '<span class="pill ' + (up ? 'up' : 'down') + '">' + (up ? '\u25B2 ' : '\u25BC ') + Math.abs(p).toFixed(2) + '%</span>';
+}
+
+function spark(arr, color) {
+  var min = minOf(arr), max = maxOf(arr), r = (max - min) || 1, pts = [];
+  for (var i = 0; i < arr.length; i++) { pts.push((i / (arr.length - 1) * 100).toFixed(2) + ',' + (31 - (arr[i] - min) / r * 29).toFixed(2)); }
+  return '<svg viewBox="0 0 100 32" preserveAspectRatio="none"><polyline fill="none" stroke="' + color + '" stroke-width="1.8" stroke-linejoin="round" vector-effect="non-scaling-stroke" points="' + pts.join(' ') + '"/></svg>';
+}
+
+function fdate(s, short) {
+  var d = new Date(s + 'T12:00:00');
+  if (!short) { return d.toLocaleDateString('en-IE', {weekday: 'short', day: 'numeric', month: 'short', year: 'numeric'}); }
+  if (S.range > 0 && S.range <= 130) { return d.toLocaleDateString('en-IE', {day: 'numeric', month: 'short'}); }
+  if (S.range > 0 && S.range <= 1305) { return d.toLocaleDateString('en-IE', {month: 'short', year: '2-digit'}); }
+  return d.toLocaleDateString('en-IE', {year: 'numeric'});
+}
+
+function stat(l, v, c) {
+  return '<div class="stat"><div class="sl">' + l + '</div><div class="sv"' + (c ? ' style="color:' + c + '"' : '') + '>' + v + '</div></div>';
+}
+
+function renderGrid() {
+  var h = '';
+  for (var g = 0; g < GROUPS.length; g++) {
+    var cards = '';
+    for (var i = 0; i < S.latest.items.length; i++) {
+      var it = S.latest.items[i];
+      if (it.group !== GROUPS[g]) { continue; }
+      var p = it[S.cur], sp = nn(slice(series(it.key), 66));
+      var col = sp[sp.length - 1] >= sp[0] ? '#22c55e' : '#ef4444';
+      cards += '<div class="card' + (it.key === S.sel ? ' active' : '') + '" onclick="pick(\'' + it.key + '\')">';
+      cards += '<div class="row"><div><div class="nm">' + it.name + '</div><div class="un">per ' + it.unit + '</div></div>' + pill(it.change_pct) + '</div>';
+      cards += '<div class="px">' + sym() + fmt(p, dpFor(p)) + '</div>' + spark(sp, col) + '</div>';
+    }
+    if (cards) { h += '<h2>' + GROUPS[g] + '</h2><div class="grid">' + cards + '</div>'; }
+  }
+  $('groups').innerHTML = h;
+}
+
+function renderMain() {
+  var it = item(S.sel), data = slice(series(S.sel), S.range), labels = slice(S.hist.dates, S.range);
+  var f = firstIdx(data);
+  if (f > 0) { data = data.slice(f); labels = labels.slice(f); }
+  var vals = nn(data), p = it[S.cur];
+  var rp = pct(vals[0], vals[vals.length - 1]), hi = maxOf(vals), lo = minOf(vals);
+  var col = rp >= 0 ? '#22c55e' : '#ef4444';
+  $('mName').innerHTML = it.name + ' <span class="un">per ' + it.unit + '</span>';
+  $('mPrice').innerHTML = sym() + fmt(p, dpFor(p));
+  $('mChg').innerHTML = pill(it.change_pct) + ' <span class="muted">on the day</span>';
+  var since = new Date(labels[0] + 'T12:00:00').toLocaleDateString('en-IE', {month: 'short', year: 'numeric'});
+  $('stats').innerHTML = stat('Period change', (rp >= 0 ? '+' : '') + rp.toFixed(2) + '%', col) + stat('Period high', sym() + fmt(hi, dpFor(hi))) + stat('Period low', sym() + fmt(lo, dpFor(lo))) + stat('Data from', since);
+  var rb = '';
+  for (var i = 0; i < RANGES.length; i++) { rb += '<button class="' + (RANGES[i][1] === S.range ? 'on' : '') + '" onclick="setRange(' + RANGES[i][1] + ')">' + RANGES[i][0] + '</button>'; }
+  $('ranges').innerHTML = rb;
+  var t = thin(labels, data);
+  drawChart(t[0], t[1], col, dpFor(p));
+}
+
+function drawChart(labels, data, col, dp) {
+  if (S.chart) { S.chart.destroy(); }
+  var fill = function (c) {
+    var a = c.chart.chartArea;
+    if (!a) { return 'rgba(0,0,0,0)'; }
+    var g = c.chart.ctx.createLinearGradient(0, a.top, 0, a.bottom);
+    g.addColorStop(0, hexA(col, 0.30)); g.addColorStop(1, hexA(col, 0));
+    return g;
+  };
+  S.chart = new Chart($('chart').getContext('2d'), {
+    type: 'line',
+    data: {labels: labels, datasets: [{data: data, borderColor: col, borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, pointHoverBackgroundColor: col, pointHoverBorderColor: '#0b1120', pointHoverBorderWidth: 2, tension: 0.2, spanGaps: true, fill: true, backgroundColor: fill}]},
+    options: {
+      responsive: true, maintainAspectRatio: false, animation: {duration: 450},
+      interaction: {mode: 'index', intersect: false},
+      plugins: {
+        legend: {display: false},
+        tooltip: {backgroundColor: '#0b1120', borderColor: '#26324d', borderWidth: 1, titleColor: '#8a9bb8', bodyColor: '#e6edf7', bodyFont: {weight: '600', size: 14}, displayColors: false, padding: 10,
+          callbacks: {title: function (t) { return fdate(t[0].label); }, label: function (t) { return sym() + fmt(t.parsed.y, dp); }}}
+      },
+      scales: {
+        x: {grid: {display: false}, border: {display: false}, ticks: {color: '#5f6f8c', maxTicksLimit: 6, maxRotation: 0, autoSkip: true, callback: function (v) { return fdate(this.getLabelForValue(v), true); }}},
+        y: {position: 'right', grid: {color: '#1a2540'}, border: {display: false}, ticks: {color: '#5f6f8c', maxTicksLimit: 5, callback: function (v) { return fmt(v, dp); }}}
+      }
+    }
+  });
+}
+
+function renderCur() {
+  var b = $('cur').children;
+  for (var i = 0; i < b.length; i++) { b[i].className = b[i].getAttribute('data-c') === S.cur ? 'on' : ''; }
+}
+
+function renderAll() { renderCur(); renderMain(); renderGrid(); }
+function pick(key) { S.sel = key; renderMain(); renderGrid(); window.scrollTo({top: 0, behavior: 'smooth'}); }
+function setRange(n) { S.range = n; renderMain(); }
+function setCur(c) { S.cur = c; try { localStorage.setItem('cmd_cur', c); } catch (e) {} renderAll(); }
+
+Chart.defaults.font.family = 'Inter,-apple-system,Segoe UI,Helvetica,Arial,sans-serif';
+var bust = '?t=' + Date.now();
+Promise.all([
+  fetch('data/latest.json' + bust).then(function (r) { return r.json(); }),
+  fetch('data/history.json' + bust).then(function (r) { return r.json(); })
+]).then(function (res) {
+  S.latest = res[0]; S.hist = res[1];
+  var d = new Date(S.latest.updated);
+  $('upd').innerHTML = 'Updated ' + d.toLocaleString('en-IE', {weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'}) + ' &middot; EUR/USD ' + S.latest.eurusd.toFixed(4);
+  renderAll();
+}).catch(function () { $('upd').innerHTML = 'Could not load prices - run the workflow first'; });
+</script>
+</body></html>
