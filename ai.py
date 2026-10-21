@@ -1,46 +1,46 @@
-import os, html, urllib.parse
+import os, time, html, urllib.parse
 import xml.etree.ElementTree as ET
 import requests
 
-TOKEN = os.environ.get("GITHUB_TOKEN")
-ENDPOINTS = [
-    "https://models.github.ai/inference/chat/completions",
-    "https://models.inference.ai.azure.com/chat/completions",
-]
-MODELS = ["openai/gpt-4.1", "openai/gpt-4.1-mini", "openai/gpt-4o", "openai/gpt-4o-mini", "meta/llama-3.3-70b-instruct"]
+KEY = os.environ.get("GEMINI_API_KEY")
+MODELS = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
+BASE = "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent"
 
 
 def chat(prompt, max_tokens=1500):
-    if not TOKEN:
-        raise RuntimeError("No GITHUB_TOKEN available")
-    headers = {
-        "Authorization": "Bearer " + TOKEN,
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "X-GitHub-Api-Version": "2022-11-28",
+    if not KEY:
+        raise RuntimeError("No GEMINI_API_KEY set")
+    body = {
+        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+        "tools": [{"google_search": {}}],
+        "generationConfig": {"temperature": 0.3, "maxOutputTokens": max(max_tokens, 1500) * 4},
     }
     last = None
-    for url in ENDPOINTS:
-        for model in MODELS:
-            name = model if "models.github.ai" in url else model.split("/", 1)[1]
+    for model in MODELS:
+        for attempt in range(3):
             try:
-                r = requests.post(url, headers=headers, timeout=180, allow_redirects=False, json={
-                    "model": name, "max_tokens": max_tokens, "temperature": 0.3,
-                    "messages": [{"role": "user", "content": prompt}]})
+                r = requests.post(BASE % model, params={"key": KEY}, json=body, timeout=180)
             except Exception as e:
-                last = "%s %s: %s" % (url, name, e)
+                last = "%s: %s" % (model, e)
                 print("Request error -", last)
+                break
+            if r.status_code == 429:
+                print("Rate limited on", model, "- waiting 40s")
+                time.sleep(40)
                 continue
             try:
                 data = r.json()
-                text = data["choices"][0]["message"]["content"].strip()
-                print("Used model", name, "via", url)
+                parts = data["candidates"][0]["content"]["parts"]
+                text = "".join(p.get("text", "") for p in parts).strip()
+                if not text:
+                    raise ValueError("empty reply")
+                print("Used model", model)
+                time.sleep(5)
                 return text
             except Exception:
-                last = "%s %s: status %s, type %s, location %s, body: %s" % (
-                    url, name, r.status_code, r.headers.get("content-type"),
-                    r.headers.get("location"), (r.text or "(empty)")[:300].replace("\n", " "))
+                last = "%s: status %s, body: %s" % (model, r.status_code, (r.text or "(empty)")[:300].replace("\n", " "))
                 print("Model failed -", last)
+                break
     raise RuntimeError("All models failed. Last error: %s" % last)
 
 
