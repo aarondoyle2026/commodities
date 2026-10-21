@@ -1,78 +1,78 @@
 {
- "updated": "2026-10-21T16:32:47.918092+00:00",
- "eurusd": 1.1230907440185547,
+ "updated": "2026-10-21T16:55:01.691658+00:00",
+ "eurusd": 1.1234692335128784,
  "items": [
   {
    "key": "gold",
    "name": "Gold",
    "unit": "oz",
    "group": "Precious metals",
-   "usd": 4150.2002,
-   "eur": 3695.3383,
-   "change_pct": 0.18
+   "usd": 4152.7002,
+   "eur": 3696.3186,
+   "change_pct": 0.24
   },
   {
    "key": "silver",
    "name": "Silver",
    "unit": "oz",
    "group": "Precious metals",
-   "usd": 57.63,
-   "eur": 51.3138,
-   "change_pct": -0.13
+   "usd": 57.74,
+   "eur": 51.3944,
+   "change_pct": 0.06
   },
   {
    "key": "platinum",
    "name": "Platinum",
    "unit": "oz",
    "group": "Precious metals",
-   "usd": 1639.0,
-   "eur": 1459.3656,
-   "change_pct": -0.46
+   "usd": 1638.8,
+   "eur": 1458.696,
+   "change_pct": -0.47
   },
   {
    "key": "palladium",
    "name": "Palladium",
    "unit": "oz",
    "group": "Precious metals",
-   "usd": 1090.0,
-   "eur": 970.536,
-   "change_pct": -0.87
+   "usd": 1091.5,
+   "eur": 971.5442,
+   "change_pct": -0.74
   },
   {
    "key": "copper",
    "name": "Copper",
    "unit": "lb",
    "group": "Industrial metals",
-   "usd": 6.575,
-   "eur": 5.8544,
-   "change_pct": 0.13
+   "usd": 6.579,
+   "eur": 5.856,
+   "change_pct": 0.19
   },
   {
    "key": "brent",
    "name": "Brent Crude",
    "unit": "bbl",
    "group": "Energy",
-   "usd": 108.77,
-   "eur": 96.8488,
-   "change_pct": -0.02
+   "usd": 108.4,
+   "eur": 96.4868,
+   "change_pct": -0.36
   },
   {
    "key": "wti",
    "name": "WTI Crude",
    "unit": "bbl",
    "group": "Energy",
-   "usd": 97.19,
-   "eur": 86.538,
-   "change_pct": -4.52
+   "usd": 96.71,
+   "eur": 86.0816,
+   "change_pct": -4.99
   },
   {
    "key": "natgas",
    "name": "Natural Gas",
    "unit": "MMBtu",
    "group": "Energy",
-   "usd": 2.825,
-   "eur": 2.5154,
-   "change_pct": -4.66
+   "usd": 2.828,
+   "eur": 2.5172,
+   "change_pct": -4.56
   }
  ]
 }
