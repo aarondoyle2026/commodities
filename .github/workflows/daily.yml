@@ -5,16 +5,23 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  models: read
 jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - run: pip install yfinance
+      - run: pip install yfinance requests
       - run: python fetch_prices.py
+      - run: python summary.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: python events.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           git config user.name "price-bot"
           git config user.email "price-bot@users.noreply.github.com"
