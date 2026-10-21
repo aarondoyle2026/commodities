@@ -3,42 +3,48 @@ import xml.etree.ElementTree as ET
 import requests
 
 KEY = os.environ.get("GEMINI_API_KEY")
-MODELS = ["gemini-2.5-flash", "gemini-2.5-flash-lite"]
+ATTEMPTS = [
+    ("gemini-3.8-flash", True),
+    ("gemini-3.8-flash", False),
+    ("gemini-3.5-flash-lite", True),
+    ("gemini-3.5-flash-lite", False),
+]
 BASE = "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent"
 
 
 def chat(prompt, max_tokens=1500):
     if not KEY:
         raise RuntimeError("No GEMINI_API_KEY set")
-    body = {
-        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-        "tools": [{"google_search": {}}],
-        "generationConfig": {"temperature": 0.3, "maxOutputTokens": max(max_tokens, 1500) * 4},
-    }
     last = None
-    for model in MODELS:
-        for attempt in range(3):
+    for model, search in ATTEMPTS:
+        body = {
+            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+            "generationConfig": {"temperature": 0.3, "maxOutputTokens": max(max_tokens, 1500) * 4},
+        }
+        if search:
+            body["tools"] = [{"google_search": {}}]
+        label = model + (" + search" if search else "")
+        for attempt in range(2):
             try:
                 r = requests.post(BASE % model, params={"key": KEY}, json=body, timeout=180)
             except Exception as e:
-                last = "%s: %s" % (model, e)
+                last = "%s: %s" % (label, e)
                 print("Request error -", last)
                 break
-            if r.status_code == 429:
-                print("Rate limited on", model, "- waiting 40s")
+            if r.status_code == 429 and attempt == 0:
+                print("Rate limited on", label, "- waiting 40s")
                 time.sleep(40)
                 continue
             try:
-                data = r.json()
-                parts = data["candidates"][0]["content"]["parts"]
+                parts = r.json()["candidates"][0]["content"]["parts"]
                 text = "".join(p.get("text", "") for p in parts).strip()
                 if not text:
                     raise ValueError("empty reply")
-                print("Used model", model)
+                print("Used model", label)
                 time.sleep(5)
                 return text
             except Exception:
-                last = "%s: status %s, body: %s" % (model, r.status_code, (r.text or "(empty)")[:300].replace("\n", " "))
+                last = "%s: status %s, body: %s" % (label, r.status_code, (r.text or "(empty)")[:300].replace("\n", " "))
                 print("Model failed -", last)
                 break
     raise RuntimeError("All models failed. Last error: %s" % last)
