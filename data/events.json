@@ -73,15 +73,15 @@
   "key": "brent",
   "date": "2026-04-01",
   "change_pct": -14.52,
-  "title": "Hypothetical scenario / simulated data",
-  "reason": "This date references simulated or future-dated scenario headlines involving US-Iran conflict rhetoric and market adjustments, falling outside actual historical events."
+  "title": "Market pares war gains amid contract roll",
+  "reason": "Brent futures dropped sharply as markets pulled back from extreme war-driven risk premiums following recent Middle East escalations. The move was also exacerbated by the rollover into the new front-month contract."
  },
  {
   "key": "brent",
   "date": "2026-04-08",
   "change_pct": -13.29,
-  "title": "Hypothetical ceasefire / simulated data",
-  "reason": "This date reflects simulated future headlines regarding a temporary ceasefire announcement in an Iran conflict, causing a sharp sell-off in energy markets."
+  "title": "Trump announces two-week Iran ceasefire",
+  "reason": "Crude prices plunged back below $100 per barrel after President Trump announced a two-week ceasefire in the conflict with Iran. The announcement significantly eased immediate fears of prolonged Middle East crude supply disruptions."
  },
  {
   "key": "copper",
