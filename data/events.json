@@ -336,6 +336,13 @@
   "reason": "U.S. natural gas prices plummeted further as updated forecasts confirmed incoming warmer weather, thoroughly erasing the remaining risk premium from the January arctic blast."
  },
  {
+  "key": "natgas",
+  "date": "2026-10-27",
+  "change_pct": 17.79,
+  "title": "European gas surge and oversold bounce",
+  "reason": "Natural gas prices jumped due to surging European energy prices hitting multi-year highs over winter risk concerns, combined with technical buying following an oversold market condition."
+ },
+ {
   "key": "palladium",
   "date": "2000-02-22",
   "change_pct": 16.48,
