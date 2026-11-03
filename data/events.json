@@ -84,6 +84,13 @@
   "reason": "Crude prices plunged back below $100 per barrel after President Trump announced a two-week ceasefire in the conflict with Iran. The announcement significantly eased immediate fears of prolonged Middle East crude supply disruptions."
  },
  {
+  "key": "brent",
+  "date": "2026-11-02",
+  "change_pct": -10.97,
+  "title": "Iran Peace Deal Eases Supply Concerns",
+  "reason": "Crude oil futures plunged as diplomatic breakthroughs and reports of a potential peace deal regarding the conflict with Iran eased supply disruption fears. The prospect of de-escalation led to a sharp unwinding of geopolitical risk premiums in the market."
+ },
+ {
   "key": "copper",
   "date": "2004-10-13",
   "change_pct": -11.01,
