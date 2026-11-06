@@ -91,6 +91,13 @@
   "reason": "Crude oil futures plunged as diplomatic breakthroughs and reports of a potential peace deal regarding the conflict with Iran eased supply disruption fears. The prospect of de-escalation led to a sharp unwinding of geopolitical risk premiums in the market."
  },
  {
+  "key": "brent",
+  "date": "2026-11-04",
+  "change_pct": -8.67,
+  "title": "Attack on Iran's South Pars Field",
+  "reason": "Brent crude rebounded sharply after an attack on Iran's South Pars field, driving prices higher despite broader concerns over demand and a potential Middle East settlement."
+ },
+ {
   "key": "copper",
   "date": "2004-10-13",
   "change_pct": -11.01,
