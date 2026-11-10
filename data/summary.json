@@ -1,26 +1,23 @@
 {
- "date": "2026-11-07",
- "headline": "Oil markets plunge and copper slumps as AI and geopolitical fears hit demand",
+ "date": "2026-11-10",
+ "headline": "Oil Plunges on Iran De-escalation While Precious Metals and Copper Advance",
  "paragraphs": [
-  "Brent crude suffered its steepest weekly drop since 2020, tumbling nearly seventeen percent as markets reacted to growing hopes for Middle East diplomacy and shifting sentiment. WTI crude followed suit with a weekly decline exceeding thirteen percent. The euro traded at 1.1228 against the dollar, helping cushion import costs for Irish businesses.",
-  "Copper fell toward multi-month lows, heading for its worst week since March amid a sharp rout in the artificial intelligence sector and concerns over shifting United States trade policy. Meanwhile, precious metals posted solid weekly gains despite slight daily pullbacks, with gold holding above the critical four thousand dollar threshold ahead of key United States jobs data, though a hawkish Federal Reserve and strong employment figures threaten further recovery. Palladium dropped nearly two percent on the day to close at one thousand twenty-one dollars and fifty cents."
+  "Crude oil suffered a severe selloff, with Brent dropping 6.67 percent to EUR 81.74 and WTI falling 5.37 percent to EUR 76.56, hitting 10-week lows. This sharp correction was driven by President Trump signaling military restraint and stating that new strikes on Iran are highly unlikely despite recent shipping attacks. The resulting drop in energy costs boosted broader market sentiment and helped ease inflationary pressures for businesses.",
+  "In contrast, precious metals rallied strongly across the board on a weaker US dollar and risk appetite, led by platinum jumping 2.57 percent to EUR 1,405.42, silver gaining 2.31 percent to EUR 47.21, palladium rising 2.06 percent to EUR 921.98, and gold advancing 1.10 percent to EUR 3,669.92. Copper also pushed higher, gaining 1.95 percent to EUR 5.65 per lb, supported by a supply squeeze and procurement scramble in China ahead of key US inflation data.",
+  "The euro traded at 1.1226 against the dollar, helping soften the direct impact of dollar-denominated commodity shifts for Irish importers."
  ],
  "sources": [
   {
-   "title": "Gold price holds critical $4,000 support, but strong U.S. jobs data and inflation risks threaten recovery - Kitco",
-   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPMVFrY1hheExQaDduSlBRcndvS2FkcW84Y0UwRnVZUGRKSnJ5eW9keHNzemhJNEpadVQxRlJXMHNxYzhOVXVLakZNNTBBNmNsYTFadkpvN0Z4RnFwWUtYcVoxRlZjV3pNaWphd2FZRGt5eGp4Z20wc2xkeTN3dXFpa0xodkIwdGlQTHhCc05PQTBISkNjVjE1LTZSMUR0UV91SlFNR0x5STlSeEt6R2lOR0JsUXBURzk3V2c?oc=5"
+   "title": "\u3010JX Advanced Metals FY2026 Q2 Earnings Call\u3011Full-Year Operating Profit Raised by \u00a523 Billion to \u00a5255 Billion as AI Data Center Demand and Higher Copper Prices Provide Tailwinds - finance.biggo.com",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5xMGMzSkQyZjV6NFQ0YlNQbHdxdk1KWk9uVTlyVGVyV2s2OHkzbk1fSU9iQVhmdmNZdW5yMHNZRXZLb2NOb2huYlZjdDVOQm5yVnRxZmJxU1FPQjRFOWYzYg?oc=5"
   },
   {
-   "title": "Copper price falls, heads for worst week since March on AI rout - Mining.com",
-   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQQzNDWVhoangtRlJ6R0U2aG5tcldob1Q3WGtLNFIyenRKbUVxLTAzZml4c1ZUejljTnhFWDFrcXlKLWVRZlpIT2dhSndFbXlBTUd4cGZCZHFrZEdTZEwxajhtWjdHbW9xVkllRU1lQk9UTHRIQ2RCNHJ2MVlINXhmd2dJZ21pOXlHWS1Tb2NudW1HUkw2?oc=5"
+   "title": "Copper Price Forecast: China\u2019s Tight Supply Lifts Prices Before US CPI - FXEmpire",
+   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNUHh3Qmk5WE1qcms2dHYzWnVfME5STW90Q19xMG52ZVMwT1VINGZNNmRZazMtWENVSFdBdktFYUtYaFBmZUJHWUl2VThzc05jQnFhcG1oV203Ri1sNDEyZnY0eVZOY011eEJXb1pRZVlvdWZVcGlFaWY3MVMtTWU5bEN2MTlhWm44cGJSTW1jSFpuRkNmcTNJWWk5QWxpMFQ5OFQwUGVLWmd3T0pDZnZhUWR4LUhZVFNtS0lj?oc=5"
   },
   {
-   "title": "Brent oil prices set for biggest weekly drop since 2020 - RTE.ie",
-   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBTdUJUc1NRV1ZKOFNVQjBvNXd4ZmZWRER4U3g2aHpaaTVtVFVPZTlxRVdaQlZ2UHBRWXIwSnBJS01DdTFfSmdCQTl6bTBFRHhpNEowSk5xZDZkbEFNa1hza0FTOV9zWWJOVEFpWGhOdFc3VGlWYWpV?oc=5"
-  },
-  {
-   "title": "Oil Futures Turn Lower as Market Holds Out Hope for Middle East Diplomacy - WSJ",
-   "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPanI0VE5sUnZXNzJ1Tm9vWmVYYTZWbWRuMGRoOUtSZnJTVVJrT3dub0FKa1VFdlpvLUg3SHJvd3RBN25LNWdZLTlCS2FScUg2UUdLdEhPZXlyeFg5a2Z0TURCVWw5Wkp1VWhVNTQ2UktXX2RJMzdRc0c4emVzbkMyYkRhd2xfZFNSZ05aSWI0amNlUUc0NThHQVdSMHlCdDRfNmh6LS1SeTdmQWNGZlpn?oc=5"
+   "title": "Oil prices hit 10-week low after Donald Trump says strikes on Iran \u2018highly unlikely\u2019 - Financial Times",
+   "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPcVdMbllYT0JtVGNxZ2ZKdlpxUjBLMWJESlU0emF1eDk0NDdweHBndXV1MEtYV0I3UlZVTTljS1NoUnBLX1VpMVUwVE5jNmM2OU9iMEV5WklTUENZdTlqTUpGMS1nRlNpNzVyclZxbTJGM3B2ODcwem5xNVhVX1I4NldLVUs?oc=5"
   }
  ]
 }
