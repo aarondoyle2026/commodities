@@ -266,6 +266,13 @@
   "reason": "Gold fell sharply as diminishing expectations for Federal Reserve interest rate cuts weighed on non-yielding bullion."
  },
  {
+  "key": "gold",
+  "date": "2026-11-19",
+  "change_pct": -5.72,
+  "title": "Rising Federal Reserve tightening fears",
+  "reason": "Gold prices tumbled sharply as mounting expectations of renewed Federal Reserve monetary tightening weighed heavily on non-yielding assets. The slide accelerated as technical selling pushed prices toward the key $3,500 support level."
+ },
+ {
   "key": "natgas",
   "date": "2001-09-27",
   "change_pct": 23.11,
