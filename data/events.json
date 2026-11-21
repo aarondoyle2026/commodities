@@ -364,6 +364,13 @@
   "reason": "Natural gas prices jumped due to surging European energy prices hitting multi-year highs over winter risk concerns, combined with technical buying following an oversold market condition."
  },
  {
+  "key": "natgas",
+  "date": "2026-11-20",
+  "change_pct": 16.0,
+  "title": "Colder weather forecasts drive rebound",
+  "reason": "Natural gas prices rebounded despite record output and weak cash demand due to new weather forecasts predicting colder US temperatures."
+ },
+ {
   "key": "palladium",
   "date": "2000-02-22",
   "change_pct": 16.48,
