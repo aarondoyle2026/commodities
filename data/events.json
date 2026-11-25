@@ -371,6 +371,13 @@
   "reason": "Natural gas prices rebounded despite record output and weak cash demand due to new weather forecasts predicting colder US temperatures."
  },
  {
+  "key": "natgas",
+  "date": "2026-11-24",
+  "change_pct": 16.77,
+  "title": "Cold snap and European supply fears",
+  "reason": "Natural gas prices surged due to forecasts of a cold snap in Europe that intensified supply shortage fears, alongside a rebound in US markets after recent declines."
+ },
+ {
   "key": "palladium",
   "date": "2000-02-22",
   "change_pct": 16.48,
